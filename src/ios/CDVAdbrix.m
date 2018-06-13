@@ -2,14 +2,36 @@
 
 #import <Cordova/CDV.h>
 
+#import <AdBrix/AdBrix.h>
+
 @interface CDVAdbrix : CDVPlugin {
   // Member variables go here.
 }
 
 - (void)coolMethod:(CDVInvokedUrlCommand*)command;
+
+- (void)retention:(CDVInvokedUrlCommand*)command;
+
 @end
 
 @implementation CDVAdbrix
+
+- (void)retention:(CDVInvokedUrlCommand*)command
+{
+    NSString* activityName = [command.arguments objectAtIndex:0];
+    NSString* subName = [command.arguments objectAtIndex:1];
+    
+    NSLog(@"Activity Name: %@, Sub Name: %@", activityName, subName);
+    
+    if ([subName isKindOfClass:[NSNull class]])
+    {
+        [AdBrix retention:activityName];
+    }
+    else
+    {
+        [AdBrix retention:activityName param:subName];
+    }
+}
 
 - (void)coolMethod:(CDVInvokedUrlCommand*)command
 {
