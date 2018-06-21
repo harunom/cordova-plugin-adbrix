@@ -1,4 +1,4 @@
-package cordovapluginadbrix.Adbrix;
+package cordova.plugin.adbrix;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;

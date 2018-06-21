@@ -21,7 +21,7 @@
     NSString* activityName = [command.arguments objectAtIndex:0];
     NSString* subName = [command.arguments objectAtIndex:1];
 
-    NSLog(@"Activity Name: %@, Sub Name: %@", activityName, subName);
+//    NSLog(@"Activity Name: %@, Sub Name: %@", activityName, subName);
 
     if ([subName isKindOfClass:[NSNull class]])
     {
