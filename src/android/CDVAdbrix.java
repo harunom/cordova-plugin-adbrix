@@ -7,6 +7,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.*;
+
+import com.igaworks.adbrix.IgawAdbrix;
+
 /**
  * This class echoes a string called from JavaScript.
  */
@@ -18,6 +22,20 @@ public class CDVAdbrix extends CordovaPlugin {
             String message = args.getString(0);
             this.coolMethod(message, callbackContext);
             return true;
+        } else if (action.equals("retention")) {
+            String activityName = args.getString(0);
+            String subName = args.getString(1);
+            
+            Log.v("Adbrix Plugin", "Activity Name: " + activityName + ", Sub Name: " + subName);
+            
+            if (subName == null)
+            {
+                IgawAdbrix.retention(activityName);
+            }
+            else
+            {
+                IgawAdbrix.retention(activityName, subName);
+            }
         }
         return false;
     }
