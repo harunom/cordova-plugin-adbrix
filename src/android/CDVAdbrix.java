@@ -26,20 +26,22 @@ public class CDVAdbrix extends CordovaPlugin {
             String activityName = args.getString(0);
             String subName = args.getString(1);
             
-            Log.v("Adbrix Plugin", "Activity Name: " + activityName + ", Sub Name: " + subName);
+            //            Log.v("Adbrix Plugin", "Activity Name: " + activityName + ", Sub Name: " + subName);
             
-            if (subName == null)
+            if (subName.equals("null"))
             {
+                //                Log.v("Adbrix Plugin", "하나짜리");
                 IgawAdbrix.retention(activityName);
             }
             else
             {
+                //                Log.v("Adbrix Plugin", "두개짜리");
                 IgawAdbrix.retention(activityName, subName);
             }
         }
         return false;
     }
-
+    
     private void coolMethod(String message, CallbackContext callbackContext) {
         if (message != null && message.length() > 0) {
             callbackContext.success(message);
